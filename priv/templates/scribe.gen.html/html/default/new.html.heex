@@ -1,0 +1,8 @@
+<.header>
+  New <%= contract.schema.human_singular %>
+  <:subtitle>Use this form to manage <%= contract.schema.singular %> records in your database.</:subtitle>
+</.header>
+
+<.<%= contract.schema.singular %>_form changeset={@changeset} action={~p"<%= contract.schema.route_prefix %>"} />
+
+<.back navigate={~p"<%= contract.schema.route_prefix %>"}>Back to <%= contract.schema.plural %></.back>
