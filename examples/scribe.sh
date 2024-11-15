@@ -13,66 +13,53 @@ Maybe_Create_App() {
     cd "${TARGET_DIR}"
     mix phx.new "${APP_DIRNAME}" --database sqlite3
 
-    echo "Setup the new app with Elixir Scribe. Add database files to a folder ignored by git."
+    echo "-> Add the Elixir Scribe dependency."
+    echo "-> Run mix deps.get."
+    echo "-> Run mix compile."
+    echo "-> Run mix ecto.setup."
+    echo "-> Run git init and commit it all."
+    echo "-> You can now use ./examples/.scribe.sh example-here"
 
     exit 0
   fi
 }
 
 Scribe_Domain_Resource_Behaviour() {
-  Maybe_Create_App
-
   mix scribe.gen.html ShoppingCart Orders order items:array:string --no-default-actions --actions place_order,cancel_order
   mix scribe.gen.html Accounting Invoices invoice items:array:string --no-default-actions --actions pay_invoice,cancel_invoice
 }
 
 Scribe_Domain_Criteria_1() {
-  Maybe_Create_App
-
   mix scribe.gen.domain Sales.Catalog Category categories name:string desc:string
 }
 
 Scribe_Domain_Criteria_2() {
-  Maybe_Create_App
-
   mix scribe.gen.domain Sales.Catalog Product products sku:string name:string desc:string --actions import,export
 }
 
 Scribe_Domain_Criteria_3() {
-  Maybe_Create_App
-
   mix scribe.gen.html Warehouse.Fulfillment FulfillmentOrder fulfillment_orders uuid:string label:string total_quantity:integer location:string products_sku:array:string --no-default-actions --actions list
 }
 
 Scribe_Html_Criteria_1() {
-  Maybe_Create_App
-
   mix scribe.gen.html Sales.Catalog Category categories name:string desc:string
 }
 
 Scribe_Html_Criteria_2() {
-  Maybe_Create_App
-
   mix scribe.gen.html Sales.Catalog Product products sku:string name:string desc:string --actions import,export
 }
 
 Scribe_Html_Criteria_3() {
-  Maybe_Create_App
-
   mix scribe.gen.html Warehouse.Fulfillment FulfillmentOrder fulfillment_orders uuid:string label:string total_quantity:integer location:string products_sku:array:string --no-default-actions --actions list
 }
 
 Todo_App() {
-  Maybe_Create_App
-
   mix scribe.gen.html Todo Task tasks title:string done:boolean --no-schema
   mix scribe.gen.html Todo Tag tags title:string desc:string
   mix scribe.gen.html Acounts User users name:string email:string
 }
 
 Shop_App() {
-  Maybe_Create_App
-
   # Sales Catalog
   mix scribe.gen.html Sales.Catalog Category categories name:string desc:string
   mix scribe.gen.html Sales.Catalog Product products sku:string name:string desc:string price:integer vat:integer --actions import,export
@@ -91,9 +78,6 @@ Shop_App() {
 }
 
 Online_Shop() {
-
-  Maybe_Create_App
-
   # CONTENT
   mix scribe.gen.html OnlineShop.Content Home home --no-schema --no-default-actions --actions render
   mix scribe.gen.html OnlineShop.Content ProductList product_lists --no-schema --no-default-actions --actions list
@@ -138,8 +122,6 @@ Online_Shop() {
 }
 
 Blog_Site() {
-  Maybe_Create_App
-
   # BLOG SITE PAGES
   mix scribe.gen.html Blog.Site Home home --no-schema --no-default-actions --actions render
   # mix scribe.gen.html Blog.Page PostsLists posts_lists --no-schema --no-default-actions --actions list
@@ -172,6 +154,8 @@ Main() {
   local APP_DIRNAME="my_app"
   local TARGET_DIR=".local"
 
+  Maybe_Create_App
+
   for input in "${@}"; do
     case "${input}" in
       --dir )
@@ -200,25 +184,21 @@ Main() {
         ;;
 
       scribe-domain-criteria-1 )
-        Maybe_Create_App
         Scribe_Domain_Criteria_1
         exit $?
         ;;
 
       scribe-domain-criteria-2 )
-        Maybe_Create_App
         Scribe_Domain_Criteria_2
         exit $?
         ;;
 
       scribe-domain-criteria-3 )
-        Maybe_Create_App
         Scribe_Domain_Criteria_3
         exit $?
         ;;
 
       scribe-domain-criterias )
-        Maybe_Create_App
         Scribe_Domain_Criteria_1
         Scribe_Domain_Criteria_2
         Scribe_Domain_Criteria_3
@@ -226,25 +206,21 @@ Main() {
         ;;
 
       scribe-html-criteria-1 )
-        Maybe_Create_App
         Scribe_Html_Criteria_1
         exit $?
         ;;
 
       scribe-html-criteria-2 )
-        Maybe_Create_App
         Scribe_Html_Criteria_2
         exit $?
         ;;
 
       scribe-html-criteria-3 )
-        Maybe_Create_App
         Scribe_Html_Criteria_3
         exit $?
         ;;
 
       scribe-html-criterias )
-        Maybe_Create_App
         Scribe_Html_Criteria_1
         Scribe_Html_Criteria_2
         Scribe_Html_Criteria_3
