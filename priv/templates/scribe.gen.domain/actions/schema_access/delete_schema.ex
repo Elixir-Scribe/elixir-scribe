@@ -3,6 +3,6 @@
 
   def <%= action_first_word %>(uuid) when is_binary(uuid) do
     uuid
-    |> <%= contract.schema.human_singular %>API.<%= read_action %>!()
+    |> <%= inspect(contract.schema.alias) %>API.<%= read_action %>!()
     |> Repo.delete()
   end
