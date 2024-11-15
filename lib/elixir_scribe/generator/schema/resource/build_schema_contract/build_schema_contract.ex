@@ -1,6 +1,7 @@
 defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
   @moduledoc false
   alias ElixirScribe.Generator.SchemaContract
+  alias ElixirScribe.Utils.StringAPI
 
   def build(args, opts) when is_list(args) and is_list(opts), do: new(args, opts)
 
@@ -20,7 +21,7 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
     with :ok <- validate_args!(args) do
       [domain_name | schema_args] = args
       [resource_name, schema_plural | cli_attrs] = schema_args
-      resource_name = domain_name |> Module.concat(resource_name) |> inspect()
+      domain_resource_name = domain_name |> Module.concat(resource_name) |> inspect()
 
       opts = Keyword.put(opts, :web, domain_name)
 
@@ -28,8 +29,8 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
       otp_app = Mix.Phoenix.otp_app()
       opts = Keyword.merge(Application.get_env(otp_app, :generators, []), opts)
       base = Mix.Phoenix.context_base(ctx_app)
-      basename = Phoenix.Naming.underscore(resource_name)
-      module = Module.concat([base, resource_name])
+      basename = Phoenix.Naming.underscore(domain_resource_name)
+      module = Module.concat([base, domain_resource_name])
 
       singular =
         module
@@ -70,6 +71,18 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
 
       fixture_unique_functions = fixture_unique_functions(singular, uniques, attrs)
 
+      alias_singular = module |> Module.split() |> List.last()
+
+      alias_plural =
+        schema_plural
+        |> String.replace(singular, alias_singular)
+
+      module_alias = alias_singular |> Module.concat(nil)
+      module_alias_plural = alias_plural |> Module.concat(nil)
+
+      human_singular = StringAPI.camel_case_to_sentence(alias_singular)
+      human_plural = StringAPI.camel_case_to_sentence(alias_plural)
+
       SchemaContract.new(%{
         opts: opts,
         module: module,
@@ -77,7 +90,8 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
         repo_alias: repo_alias,
         table: table,
         embedded?: embedded?,
-        alias: module |> Module.split() |> List.last() |> Module.concat(nil),
+        alias: module_alias,
+        alias_plural: module_alias_plural,
         file: file,
         attrs: attrs,
         plural: schema_plural,
@@ -90,8 +104,8 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
         uniques: uniques,
         redacts: redacts,
         indexes: indexes(table, assocs, uniques),
-        human_singular: Phoenix.Naming.humanize(singular),
-        human_plural: Phoenix.Naming.humanize(schema_plural),
+        human_singular: human_singular,
+        human_plural: human_plural,
         binary_id: true,
         timestamp_type: opts[:timestamp_type] || :naive_datetime,
         migration_defaults: migration_defaults(attrs),

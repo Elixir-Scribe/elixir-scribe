@@ -4,6 +4,7 @@ defmodule ElixirScribe.Utils.StringAPI do
   alias ElixirScribe.Utils.String.Capitalize.CapitalizeString
   alias ElixirScribe.Utils.String.HumanCapitalize.HumanCapitalizeString
   alias ElixirScribe.Utils.String.FirstWord.FirstWordString
+  alias ElixirScribe.Utils.String.CamelCaseToSentence
 
   def capitalize(string) when is_binary(string), do: CapitalizeString.capitalize(string)
 
@@ -18,4 +19,6 @@ defmodule ElixirScribe.Utils.StringAPI do
 
   def first_word(string, word_separators) when is_binary(string) when is_list(word_separators),
     do: FirstWordString.first(string, word_separators)
+
+  def camel_case_to_sentence(string), do: CamelCaseToSentence.convert(string)
 end

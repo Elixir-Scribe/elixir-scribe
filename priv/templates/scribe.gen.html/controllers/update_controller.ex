@@ -6,7 +6,7 @@ defmodule <%= absolute_module_action_name %>Controller do
   plug :put_view, html: <%= inspect contract.web_module %>.<%= contract.schema.web_namespace %>.<%= inspect contract.schema.alias %>HTML
 
   def <%= action %>(conn, %{"id" => id, <%= inspect contract.schema.singular %> => <%= contract.schema.singular %>_params}) do
-    case <%= contract.schema.human_singular %>API.<%= action %>(id, <%= contract.schema.singular %>_params) do
+    case <%= inspect(contract.schema.alias) %>API.<%= action %>(id, <%= contract.schema.singular %>_params) do
       {:ok, <%= contract.schema.singular %>} ->
         conn
         |> put_flash(:info, "<%= contract.schema.human_singular %> updated successfully.")
