@@ -1,19 +1,25 @@
 defmodule ElixirScribe.Utils.String.CamelCaseToSentence do
   @moduledoc """
-  Converts a camel case word to a sentence by adding spaces before transitions from capital letters to lowercase letters, or between sequences of capital letters followed by lowercase letters.
+  A module for translating camel case words into sentences while preserving
+  acronyms.
+
+  Converts a camel case word to a sentence by adding spaces before transitions
+  from capital letters to lowercase letters, or between sequences of capital
+  letters followed by lowercase letters.
 
   ## Examples
-      iex> CamelCaseToSentence.convert("ISBNFiles")
-      "ISBN Files"
 
-      iex> CamelCaseToSentence.convert("MySuperVariable")
-      "My Super Variable"
+      iex> CamelCaseToSentence.convert("BookISBNCode", :capitalized)
+      "Book ISBN Code"
 
-      iex> CamelCaseToSentence.convert("CamelCaseToSentence")
+      iex> CamelCaseToSentence.convert("BookISBNCode")
+      "Book ISBN code"
+
+      iex> CamelCaseToSentence.convert("CamelCaseToSentence", :capitalized)
       "Camel Case To Sentence"
 
-      iex> CamelCaseToSentence.convert("ABCD")
-      "ABCD"
+      iex> CamelCaseToSentence.convert("CamelCaseToSentence")
+      "Camel case to sentence"
   """
 
   # Regex Components:
@@ -23,8 +29,75 @@ defmodule ElixirScribe.Utils.String.CamelCaseToSentence do
   # * (?<=[a-z])(?=[A-Z]) - Matches a position after a lowercase letter and
   #   before an uppercase letter. Example: In "MySuperVariable", this matches
   #   between "My" and "Super".
-  def convert(camel_case) do
-    camel_case
+
+  @doc """
+  Converts a camel case word to a capitalized sentence and preserves acronyms.
+
+      ## Examples
+          iex> CamelCaseToSentence.convert("ISBNFiles", :capitalized)
+          "ISBN Files"
+
+          iex> CamelCaseToSentence.convert("CamelCaseToSentence", :capitalized)
+          "Camel Case To Sentence"
+
+          iex> CamelCaseToSentence.convert("ABCD", :capitalized)
+          "ABCD"
+  """
+  def convert(camel_case_word, :capitalized) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0 do
+    camel_case_word
     |> String.replace(~r/(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-z])(?=[A-Z])/, " ")
+  end
+
+  @doc """
+  Translates a camel case word into a sentence, preserving acronyms, with only
+  the first word capitalized.
+
+  ## Examples
+
+      iex> CamelCaseToSentence.convert("HTTPRequestURLParser")
+      "HTTP request URL parser"
+
+      iex> CamelCaseToSentence.convert("XMLToJSON")
+      "XML to JSON"
+
+      iex> CamelCaseToSentence.convert("JSONAPIHandler")
+      "JSONAPI handler"
+
+      iex> CamelCaseToSentence.convert("SimpleExample")
+      "Simple example"
+  """
+  def convert(camel_case_word) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0 do
+    camel_case_word
+    |> split_camel_case_into_words()
+    |> format_words()
+    |> Enum.join(" ")
+  end
+
+  defp split_camel_case_into_words(word) do
+    # Regular expression for splitting camel case while preserving acronyms
+    regex = ~r/(?<=[a-z])(?=[A-Z])|(?<=[A-Z]{2})(?=[A-Z][a-z])/
+
+    String.split(word, regex)
+  end
+
+  defp format_words(words) do
+    words
+    |> Enum.with_index()
+    |> Enum.map(fn
+      {first_word, 0} -> capitalize_sentence_first_word(first_word)
+      {remaining_words, _} -> downcase_rest_of_sentence(remaining_words)
+    end)
+  end
+
+  defp capitalize_sentence_first_word(word) do
+    if acronym?(word), do: word, else: String.capitalize(word)
+  end
+
+  defp downcase_rest_of_sentence(word) do
+    if acronym?(word), do: word, else: String.downcase(word)
+  end
+
+  defp acronym?(word) do
+    String.upcase(word) == word
   end
 end

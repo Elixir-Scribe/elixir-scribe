@@ -20,5 +20,7 @@ defmodule ElixirScribe.Utils.StringAPI do
   def first_word(string, word_separators) when is_binary(string) when is_list(word_separators),
     do: FirstWordString.first(string, word_separators)
 
-  def camel_case_to_sentence(string), do: CamelCaseToSentence.convert(string)
+  def camel_case_to_sentence(camel_case_word) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0, do: CamelCaseToSentence.convert(camel_case_word)
+
+  def camel_case_to_sentence(camel_case_word, modifier) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0 and is_atom(modifier), do: CamelCaseToSentence.convert(camel_case_word)
 end
