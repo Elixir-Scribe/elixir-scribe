@@ -20,8 +20,8 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildTestActionFilesPaths.Build
     plural_actions = ElixirScribe.resource_plural_actions()
 
     resource_name =
-      (action in plural_actions && contract.resource_name_plural) ||
-        contract.resource_name_singular
+      (action in plural_actions && contract.resource_path_name_plural) ||
+        contract.resource_path_name_singular
 
     filename = "#{action}_" <> resource_name <> "_test.exs"
 

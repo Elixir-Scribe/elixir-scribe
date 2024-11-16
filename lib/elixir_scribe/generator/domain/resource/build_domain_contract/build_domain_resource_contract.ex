@@ -7,7 +7,6 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildContract.BuildDomainResour
   alias ElixirScribe.Generator.SchemaResourceAPI
   alias ElixirScribe.Generator.DomainContract
   alias ElixirScribe.Generator.SchemaContract
-  alias ElixirScribe.Utils.StringAPI
 
   def build(args, opts) when is_list(args) and is_list(opts), do: new(args, opts)
 
@@ -36,9 +35,8 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildContract.BuildDomainResour
   end
 
   defp new(context_name, %SchemaContract{} = schema, opts) do
-    resource_name_singular = schema.singular
-    resource_name_plural = schema.plural
-    resource_name_plural_capitalized = resource_name_plural |> StringAPI.capitalize()
+    resource_path_name_singular = schema.singular
+    resource_path_name_plural = schema.plural
 
     ctx_app = opts[:context_app] || Mix.Phoenix.context_app()
 
@@ -47,12 +45,12 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildContract.BuildDomainResour
 
     module = Module.concat(base, context_name)
     resource_module = Module.concat(module, schema.alias)
-    resource_module_plural = Module.concat(module, resource_name_plural_capitalized)
+    resource_module_plural = Module.concat(module, schema.alias_plural)
     web_domain_module = Module.concat(base_web, context_name)
     web_resource_module = Module.concat([web_domain_module, schema.alias])
 
     web_resource_module_plural =
-      Module.concat([web_domain_module, resource_name_plural_capitalized])
+      Module.concat([web_domain_module, schema.alias_plural])
 
     domain = Module.concat([module |> Module.split() |> List.last()])
     basedir = Path.join(["domain", Phoenix.Naming.underscore(context_name)])
@@ -63,21 +61,21 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildContract.BuildDomainResour
     lib_domain_dir = Mix.Phoenix.context_lib_path(ctx_app, basedir)
     test_domain_dir = Mix.Phoenix.context_test_path(ctx_app, basedir)
 
-    lib_web_resource_dir = Path.join([lib_web_domain_dir, resource_name_singular])
-    test_web_resource_dir = Path.join([test_web_domain_dir, resource_name_singular])
-    lib_web_resource_dir_plural = Path.join([lib_web_domain_dir, resource_name_plural])
-    test_web_resource_dir_plural = Path.join([test_web_domain_dir, resource_name_plural])
+    lib_web_resource_dir = Path.join([lib_web_domain_dir, resource_path_name_singular])
+    test_web_resource_dir = Path.join([test_web_domain_dir, resource_path_name_singular])
+    lib_web_resource_dir_plural = Path.join([lib_web_domain_dir, resource_path_name_plural])
+    test_web_resource_dir_plural = Path.join([test_web_domain_dir, resource_path_name_plural])
 
-    lib_resource_dir = Path.join([lib_domain_dir, resource_name_singular])
-    lib_resource_dir_plural = Path.join([lib_domain_dir, resource_name_plural])
-    test_resource_dir = Path.join([test_domain_dir, resource_name_singular])
-    test_resource_dir_plural = Path.join([test_domain_dir, resource_name_plural])
+    lib_resource_dir = Path.join([lib_domain_dir, resource_path_name_singular])
+    lib_resource_dir_plural = Path.join([lib_domain_dir, resource_path_name_plural])
+    test_resource_dir = Path.join([test_domain_dir, resource_path_name_singular])
+    test_resource_dir_plural = Path.join([test_domain_dir, resource_path_name_plural])
 
     test_file = test_domain_dir <> "_test.exs"
     test_fixtures_dir = Mix.Phoenix.context_app_path(ctx_app, "test/support/fixtures")
 
     test_fixtures_file =
-      Path.join([test_fixtures_dir, basedir, resource_name_singular <> "_fixtures.ex"])
+      Path.join([test_fixtures_dir, basedir, resource_path_name_singular <> "_fixtures.ex"])
 
     # generate? = Keyword.get(opts, :context, true)
     api_file = lib_resource_dir <> "_api.ex"
@@ -113,8 +111,8 @@ defmodule ElixirScribe.Generator.Domain.Resource.BuildContract.BuildDomainResour
       # generate?: generate?,
       context_app: ctx_app,
       resource_actions: Keyword.get(opts, :resource_actions),
-      resource_name_singular: resource_name_singular,
-      resource_name_plural: resource_name_plural,
+      resource_path_name_singular: resource_path_name_singular,
+      resource_path_name_plural: resource_path_name_plural,
       opts: opts
     })
   end

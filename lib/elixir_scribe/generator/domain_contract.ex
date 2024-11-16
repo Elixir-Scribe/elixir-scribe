@@ -33,8 +33,8 @@ defmodule ElixirScribe.Generator.DomainContract do
     :test_resource_dir,
     :test_resource_dir_plural,
     :context_app,
-    :resource_name_singular,
-    :resource_name_plural,
+    :resource_path_name_singular,
+    :resource_path_name_plural,
     :resource_actions
   ]
 
@@ -78,8 +78,8 @@ defmodule ElixirScribe.Generator.DomainContract do
       generate?: is_boolean() |> spec(),
       context_app: is_atom() |> spec(),
       resource_actions: is_list() |> spec(),
-      resource_name_singular: is_binary() |> spec(),
-      resource_name_plural: is_binary() |> spec(),
+      resource_path_name_singular: is_binary() |> spec(),
+      resource_path_name_plural: is_binary() |> spec(),
       opts: is_list() |> spec()
     })
   end

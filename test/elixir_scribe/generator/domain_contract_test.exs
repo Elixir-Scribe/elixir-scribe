@@ -31,8 +31,8 @@ defmodule ElixirScribe.Generator.DomainContractTest do
       resource_actions: ["list", "new", "read", "edit", "create", "update", "delete"],
       resource_module: ElixirScribe.Blog.Post,
       resource_module_plural: ElixirScribe.Blog.Posts,
-      resource_name_plural: "posts",
-      resource_name_singular: "post",
+      resource_path_name_plural: "posts",
+      resource_path_name_singular: "post",
       schema: %ElixirScribe.Generator.SchemaContract{
         alias: Post,
         api_route_prefix: "/api/blog/posts",

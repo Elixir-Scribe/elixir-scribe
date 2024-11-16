@@ -5,6 +5,7 @@ defmodule ElixirScribe.Utils.StringAPI do
   alias ElixirScribe.Utils.String.HumanCapitalize.HumanCapitalizeString
   alias ElixirScribe.Utils.String.FirstWord.FirstWordString
   alias ElixirScribe.Utils.String.CamelCaseToSentence
+  alias ElixirScribe.Utils.String.FindAcronyms
 
   def capitalize(string) when is_binary(string), do: CapitalizeString.capitalize(string)
 
@@ -23,4 +24,6 @@ defmodule ElixirScribe.Utils.StringAPI do
   def camel_case_to_sentence(camel_case_word) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0, do: CamelCaseToSentence.convert(camel_case_word)
 
   def camel_case_to_sentence(camel_case_word, modifier) when is_binary(camel_case_word) and byte_size(camel_case_word) > 0 and is_atom(modifier), do: CamelCaseToSentence.convert(camel_case_word)
+
+  def find_acronyms(string) when is_binary(string), do: FindAcronyms.find(string)
 end

@@ -269,14 +269,14 @@ defmodule Mix.Tasks.Scribe.Gen.Html do
     resource_form_source = Path.join([html_template_path, "resource_form.html.heex"])
 
     resource_form_target =
-      Path.join([context.lib_web_resource_dir, "#{context.resource_name_singular}_form.html.heex"])
+      Path.join([context.lib_web_resource_dir, "#{context.resource_path_name_singular}_form.html.heex"])
 
     not_used_action = ""
 
     [
       {:eex, :html, resource_form_source, resource_form_target, not_used_action},
       {:eex, :html, Path.join(html_template_path, "html.ex"),
-       Path.join([context.lib_web_resource_dir, "#{context.resource_name_singular}_html.ex"]),
+       Path.join([context.lib_web_resource_dir, "#{context.resource_path_name_singular}_html.ex"]),
        not_used_action}
     ]
   end
@@ -312,7 +312,7 @@ defmodule Mix.Tasks.Scribe.Gen.Html do
         target =
           Path.join([
             context.test_web_domain_dir,
-            context.resource_name_singular,
+            context.resource_path_name_singular,
             action,
             controller
           ])
@@ -345,8 +345,8 @@ defmodule Mix.Tasks.Scribe.Gen.Html do
   end
 
   defp resource_name_for_action(context, action) do
-    (action in ElixirScribe.resource_plural_actions() && context.resource_name_plural) ||
-      context.resource_name_singular
+    (action in ElixirScribe.resource_plural_actions() && context.resource_path_name_plural) ||
+      context.resource_path_name_singular
   end
 
   defp action_name(action) do

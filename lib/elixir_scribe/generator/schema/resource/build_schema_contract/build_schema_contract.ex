@@ -73,9 +73,10 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
 
       alias_singular = module |> Module.split() |> List.last()
 
-      alias_plural =
-        schema_plural
-        |> String.replace(singular, alias_singular)
+      acronyms = alias_singular |> StringAPI.find_acronyms()
+      schema_plural_capitalized = schema_plural |> StringAPI.capitalize()
+
+      alias_plural = Enum.reduce(acronyms, schema_plural_capitalized, fn acronym, acc -> acc |> String.replace(StringAPI.capitalize(acronym), acronym) end)
 
       module_alias = alias_singular |> Module.concat(nil)
       module_alias_plural = alias_plural |> Module.concat(nil)
