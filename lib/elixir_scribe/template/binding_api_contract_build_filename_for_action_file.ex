@@ -1,12 +1,12 @@
 defmodule ElixirScribe.Template.BuildFilenameForActionFileContract do
   @moduledoc false
 
-  @keys %{
+  @fields %{
     required: [:action, :action_suffix, :file_type, :file_extension],
     optional: []
   }
 
-  use ElixirScribe.Behaviour.TypedContract, keys: @keys
+  use ElixirScribe.Behaviour.TypedContract, fields: @fields
 
   @impl true
   def type_spec() do

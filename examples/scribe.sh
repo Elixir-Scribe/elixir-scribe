@@ -25,26 +25,46 @@ Maybe_Create_App() {
 }
 
 Todo_App() {
+  # sleep .5 is required to ensure each migration has a different datetime
+
   mix scribe.gen.html Todo Task tasks title:string done:boolean --no-schema
+  sleep .5
+
   mix scribe.gen.html Todo Tag tags title:string desc:string
+  sleep .5
+
   mix scribe.gen.html Acounts User users name:string email:string
 }
 
 Shop_App() {
+  # sleep .5 is required to ensure each migration has a different datetime
+
   # Sales Catalog
   mix scribe.gen.html Sales.Catalog Category categories name:string desc:string
+  sleep .5
+
   mix scribe.gen.html Sales.Catalog Product products sku:string name:string desc:string price:integer vat:integer --actions import,export
+  sleep .5
+
   mix scribe.gen.html Sales.Catalog Cart carts total_amount:integer total_quantity:integer products_skus:array:string --actions report
+  sleep .5
 
   # Sales Checkout
   mix scribe.gen.domain Sales.Checkout CheckoutProduct checkout_products sku:string name:string desc:string --no-default-actions --actions build
+  sleep .5
+
   mix scribe.gen.html Sales.Checkout Order orders total_amount:integer total_quantity:integer products_skus:array:string cart_uuid:string shipping_uuid:string --actions report
+  sleep .5
 
   # Sales Billing
+
   mix scribe.gen.domain Sales.Billing BillingProduct billing_products sku:string quantity:integer cost_per_unit:integer --no-default-actions --actions build
+  sleep .5
 
   # Warehouse Fulfillment
   mix scribe.gen.html Warehouse.Fulfillment FulfillmentProduct fulfillment_products sku:string label:string total_quantity:integer location:string --no-default-actions --actions build
+  sleep .5
+
   mix scribe.gen.html Warehouse.Shipment Parcel parcels pickup_datetime:datetime label:string carrier_uuid:string
 }
 

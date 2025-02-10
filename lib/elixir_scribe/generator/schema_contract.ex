@@ -50,7 +50,7 @@ defmodule ElixirScribe.Generator.SchemaContract do
     timestamp_type: :naive_datetime
   ]
 
-  use ElixirScribe.Behaviour.TypedContract, keys: %{required: [], optional: @optional}
+  use ElixirScribe.Behaviour.TypedContract, fields: %{required: [], optional: @optional}
 
   @impl true
   def type_spec() do

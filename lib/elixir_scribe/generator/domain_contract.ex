@@ -43,7 +43,7 @@ defmodule ElixirScribe.Generator.DomainContract do
     opts: []
   ]
 
-  use ElixirScribe.Behaviour.TypedContract, keys: %{required: @required, optional: @optional}
+  use ElixirScribe.Behaviour.TypedContract, fields: %{required: @required, optional: @optional}
 
   @impl true
   def type_spec() do
