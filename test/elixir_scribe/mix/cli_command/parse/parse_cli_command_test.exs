@@ -48,6 +48,8 @@ defmodule ElixirScribe.Mix.CLICommand.Parse.ParseCLICommandTest do
 
       expected_opts = [
         resource_actions: [
+          "import",
+          "export",
           "list",
           "new",
           "read",
@@ -55,8 +57,6 @@ defmodule ElixirScribe.Mix.CLICommand.Parse.ParseCLICommandTest do
           "create",
           "update",
           "delete",
-          "import",
-          "export"
         ],
         schema: true,
         # context: true,
@@ -180,7 +180,7 @@ defmodule ElixirScribe.Mix.CLICommand.Parse.ParseCLICommandTest do
         "import,export"
       ]
 
-      expected_actions = ElixirScribe.resource_actions() ++ ["import", "export"]
+      expected_actions = ["import", "export"] ++ ElixirScribe.resource_actions()
 
       assert {_valid_args, all_opts, _invalid_args} = MixAPI.parse_cli_command(args)
 

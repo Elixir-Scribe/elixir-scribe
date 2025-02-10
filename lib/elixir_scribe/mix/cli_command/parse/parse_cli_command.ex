@@ -69,7 +69,7 @@ defmodule ElixirScribe.Mix.CLICommand.Parse.ParseCLICommand do
     if no_default_actions do
       actions(opts[:actions])
     else
-      (ElixirScribe.resource_actions() ++ actions(opts[:actions]))
+      (actions(opts[:actions]) ++ ElixirScribe.resource_actions())
       |> Enum.uniq()
     end
   end

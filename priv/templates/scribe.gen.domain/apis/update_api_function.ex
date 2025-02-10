@@ -1,6 +1,6 @@
 
   @doc """
-  Updates the `<%= contract.schema.alias %>` for the given `uuid` with the provided `attrs`.
+  Updates the `<%= inspect contract.schema.alias %>` for the given `uuid` with the provided `attrs`.
 
   ## Examples
 

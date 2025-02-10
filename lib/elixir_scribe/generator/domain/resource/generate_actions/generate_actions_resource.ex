@@ -15,6 +15,8 @@ defmodule ElixirScribe.Generator.Domain.Resource.GenerateActions.GenerateActions
           DomainResourceAPI.build_action_files_paths(contract) do
       binding = BindingAPI.rebuild_binding_template(binding, action, file_type: :lib_core)
 
+      target_path = Regex.replace(~r/^default/, target_path, action)
+
       # When the file already exists we are asked if we want to overwrite it.
       created_or_overwritten? =
         create_action_module_file(

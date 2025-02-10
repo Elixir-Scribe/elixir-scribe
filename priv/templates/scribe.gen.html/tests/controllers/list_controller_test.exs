@@ -1,7 +1,7 @@
 defmodule <%= absolute_module_action_name %>ControllerTest do
   use <%= inspect contract.web_module %>.ConnCase
 
-  import <%= contract.schema.module %>Fixtures
+  import <%= inspect contract.schema.module %>Fixtures
 
   setup do
     <%= contract.schema.singular %> = <%= contract.schema.singular %>_fixture()

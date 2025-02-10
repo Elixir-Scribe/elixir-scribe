@@ -1,7 +1,7 @@
 defmodule <%= absolute_module_action_name %>ControllerTest do
   use <%= inspect contract.web_module %>.ConnCase
 
-  import <%= contract.schema.module %>Fixtures
+  import <%= inspect contract.schema.module %>Fixtures
 
   @update_attrs <%= Mix.Phoenix.to_text contract.schema.params.update %>
   @invalid_attrs <%= Mix.Phoenix.to_text (for {key, _} <- contract.schema.params.create, into: %{}, do: {key, nil}) %>

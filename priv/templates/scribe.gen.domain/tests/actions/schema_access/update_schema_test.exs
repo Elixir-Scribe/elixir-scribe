@@ -2,7 +2,7 @@
   alias <%= inspect contract.schema.module %>
   alias <%= inspect contract.schema.module %><%= "." <> read_action_capitalized <> "." <> read_action_capitalized <> inspect(contract.schema.alias) %>
 
-  import <%= contract.schema.module %>Fixtures
+  import <%= inspect contract.schema.module %>Fixtures
 
   @invalid_attrs <%= Mix.Phoenix.to_text for {key, _} <- contract.schema.params.create, into: %{}, do: {key, nil} %>
 
