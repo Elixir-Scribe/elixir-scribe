@@ -2,7 +2,7 @@
 
 [![Github Sponsor: https://github.com/sponsors/Exadra37](/assets/svg/github-sponsor.svg)](https://github.com/sponsors/Exadra37)
 
-https://github.com/user-attachments/assets/6a27c544-4d7b-4b76-bc12-6670479bb837
+<video src="https://github.com/user-attachments/assets/6a27c544-4d7b-4b76-bc12-6670479bb837" width="100%" height="auto" controls></video>
 
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
