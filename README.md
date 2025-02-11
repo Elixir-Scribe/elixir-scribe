@@ -2,7 +2,7 @@
 
 [![Github Sponsor: https://github.com/sponsors/Exadra37](/assets/svg/github-sponsor.svg)](https://github.com/sponsors/Exadra37)
 
-![](/assets/mp4/elixir-scribe-cli.mp4)
+![](https://github.com/Elixir-Scribe/elixir-scribe/blob/release-0.3.0_preview/assets/mp4/elixir-scribe-cli.mp4)
 
 <video src="/assets/mp4/elixir-scribe-cli.mp4" width="100%" height="auto" controls></video>
 
