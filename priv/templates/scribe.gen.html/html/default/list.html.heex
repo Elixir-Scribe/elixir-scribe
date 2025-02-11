@@ -1,0 +1,23 @@
+<.header>
+  Listing <%= contract.schema.human_plural %>
+  <:actions>
+    <.link href={~p"<%= contract.schema.route_prefix %>/new"}>
+      <.button>New <%= contract.schema.human_singular %></.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="<%= contract.schema.plural %>" rows={@<%= contract.schema.collection %>} row_click={&JS.navigate(~p"<%= contract.schema.route_prefix %>/#{&1}")}><%= for {k, _} <- contract.schema.attrs do %>
+  <:col :let={<%= contract.schema.singular %>} label="<%= Phoenix.Naming.humanize(Atom.to_string(k)) %>"><%%= <%= contract.schema.singular %>.<%= k %> %></:col><% end %>
+  <:action :let={<%= contract.schema.singular %>}>
+    <div class="sr-only">
+      <.link navigate={~p"<%= contract.schema.route_prefix %>/#{<%= contract.schema.singular %>}"}>Show</.link>
+    </div>
+    <.link navigate={~p"<%= contract.schema.route_prefix %>/#{<%= contract.schema.singular %>}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={<%= contract.schema.singular %>}>
+    <.link href={~p"<%= contract.schema.route_prefix %>/#{<%= contract.schema.singular %>}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

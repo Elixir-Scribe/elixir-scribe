@@ -2,6 +2,8 @@
 
 [![Github Sponsor: https://github.com/sponsors/Exadra37](/assets/svg/github-sponsor.svg)](https://github.com/sponsors/Exadra37)
 
+<video src="https://github.com/user-attachments/assets/6a27c544-4d7b-4b76-bc12-6670479bb837" width="100%" height="auto" controls></video>
+
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
 The motivation to create the Elixir Scribe tool was to encourage developers to write **Clean Code** in a **Clean Software Architecture**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing complexity and contributing for less technical debt.
@@ -240,12 +242,9 @@ The roadmap is extensive and due to the continuous high efforts and commitments 
 
 ### Elixir Scribe Next Release
 
-The next release will be `0.3.0`, and will contain the following new generators:
+The next release will be `0.4.0` that will add the `scribe.gen.live` generator.
 
-* `scribe.gen.domain`
-* `scribe.gen.html`
-
-The release data is expected to be around the middle of July 2024.
+No release date planned for now.
 
 ### Elixir Scribe Generators
 
@@ -258,8 +257,8 @@ This generators provide developers with the tools to go from zero to hero in no 
 
 #### Mix Tasks
 
-- [ ] `scribe.gen.domain`
-- [ ] `scribe.gen.html`
+- [x] `scribe.gen.domain`
+- [x] `scribe.gen.html`
 - [ ] `scribe.gen.live`
 - [ ] `scribe.gen.template`
   * Generates a template to be customized for the project.
