@@ -2,6 +2,8 @@
 
 [![Github Sponsor: https://github.com/sponsors/Exadra37](/assets/svg/github-sponsor.svg)](https://github.com/sponsors/Exadra37)
 
+<video src="/assets/mp4/elixir-scribe-cli.mp4" width="100%" height="auto" controls></video>
+
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
 The motivation to create the Elixir Scribe tool was to encourage developers to write **Clean Code** in a **Clean Software Architecture**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing complexity and contributing for less technical debt.
