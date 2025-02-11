@@ -4,7 +4,7 @@
 
 ![](https://github.com/Elixir-Scribe/elixir-scribe/blob/release-0.3.0_preview/assets/mp4/elixir-scribe-cli.mp4)
 
-<video src="/assets/mp4/elixir-scribe-cli.mp4" width="100%" height="auto" controls></video>
+<video src="https://github.com/Elixir-Scribe/elixir-scribe/blob/release-0.3.0_preview/assets/mp4/elixir-scribe-cli.mp4" width="100%" height="auto" controls></video>
 
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
