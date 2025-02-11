@@ -242,12 +242,9 @@ The roadmap is extensive and due to the continuous high efforts and commitments 
 
 ### Elixir Scribe Next Release
 
-The next release will be `0.3.0`, and will contain the following new generators:
+The next release will be `0.4.0` that will add the `scribe.gen.live` generator.
 
-* `scribe.gen.domain`
-* `scribe.gen.html`
-
-The release data is expected to be around the middle of July 2024.
+No release date planned for now.
 
 ### Elixir Scribe Generators
 

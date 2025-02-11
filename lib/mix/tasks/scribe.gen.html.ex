@@ -121,8 +121,8 @@ defmodule Mix.Tasks.Scribe.Gen.Html do
   The schema is responsible for mapping the database fields into an
   Elixir struct. A migration file for the repository will also be generated.
 
-  The schema can be found at `lib/my_app/catalog/category.ex` and it's
-  considered public, meaning you can use it from anywhere in `my_app`.
+  The schema can be found at `lib/my_app/catalog/category_schema.ex` and it's
+  considered private, except for it's struct representation. To work with changesets you want to use the Domain API, and only used this module directly to pattern match on it's struct. For example, instead of using `Category.changeset/2` to create a new changeset, use "CategoryAPI.new/1".
 
   ### Generating without a schema
 

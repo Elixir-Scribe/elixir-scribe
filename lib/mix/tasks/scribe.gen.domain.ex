@@ -12,9 +12,9 @@ defmodule Mix.Tasks.Scribe.Gen.Domain do
 
   ## Usage Examples
 
-  The `scribe.gen.domain` generator will generate files in both `lib/your_app/*` and `tests/*` folders with the same hierarchy structure.
+  The `scribe.gen.domain` generator will generate files in both `lib/my_app/*` and `tests/*` folders with the same hierarchy structure.
 
-  Usually this command isn't used directly, unless you only want to reap it's benefits for the code at `lib/your_app/*`, but not at `lib/your_app_web/*`. Most commonly usage is for the domain generator to be invoked from `scribe.gen.html` or `scribe.gen.live`.
+  Usually this command isn't used directly, unless you only want to reap it's benefits for the code at `lib/my_app/*`, but not at `lib/my_app_web/*`. Most commonly usage is for the domain generator to be invoked from `scribe.gen.html` or `scribe.gen.live`.
 
   For example, to create a fictitious online shop app you may start with this command:
 
@@ -44,7 +44,7 @@ defmodule Mix.Tasks.Scribe.Gen.Domain do
   By using the previous command examples we get this folder structure:
 
   ```text
-  lib/your_app
+  lib/my_app
   ├── catalog
   │   ├── category
   │   │   ├── create
@@ -95,7 +95,7 @@ defmodule Mix.Tasks.Scribe.Gen.Domain do
 
   Developers need to treat anything inside a resource as private, which for the
   Catalog domain (exemplified above) means to not access any module inside
-  `lib/your_app/catalog/category/*`.
+  `lib/my_app/catalog/category/*`.
 
 
   ## The Schema
@@ -103,8 +103,9 @@ defmodule Mix.Tasks.Scribe.Gen.Domain do
   The schema is responsible for mapping the database fields into an
   Elixir struct. A migration file for the repository will also be generated.
 
-  The schema can be found at `lib/your_app/catalog/category.ex` and it's
-  considered public, meaning you can use it from anywhere in `your_app`.
+  The schema can be found at `lib/my_app/catalog/category_schema.ex` and it's
+  considered private, except for it's struct representation. To work with changesets you want to use the Domain API, and only used this module directly to pattern match on it's struct. For example, instead of using `Category.changeset/2` to create a new changeset, use "CategoryAPI.new/1".
+
 
   ### Generating without a schema
 
