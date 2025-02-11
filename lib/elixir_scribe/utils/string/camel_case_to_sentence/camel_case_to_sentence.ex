@@ -1,26 +1,5 @@
 defmodule ElixirScribe.Utils.String.CamelCaseToSentence do
-  @moduledoc """
-  A module for translating camel case words into sentences while preserving
-  acronyms.
-
-  Converts a camel case word to a sentence by adding spaces before transitions
-  from capital letters to lowercase letters, or between sequences of capital
-  letters followed by lowercase letters.
-
-  ## Examples
-
-      iex> CamelCaseToSentence.convert("BookISBNCode", :capitalized)
-      "Book ISBN Code"
-
-      iex> CamelCaseToSentence.convert("BookISBNCode")
-      "Book ISBN code"
-
-      iex> CamelCaseToSentence.convert("CamelCaseToSentence", :capitalized)
-      "Camel Case To Sentence"
-
-      iex> CamelCaseToSentence.convert("CamelCaseToSentence")
-      "Camel case to sentence"
-  """
+  @moduledoc false
 
   # Regex Components:
   # * (?<=[A-Z])(?=[A-Z][a-z]) - Matches a position after an uppercase letter

@@ -56,11 +56,6 @@ Shop_App() {
   mix scribe.gen.html Sales.Checkout Order orders total_amount:integer total_quantity:integer products_skus:array:string cart_uuid:string shipping_uuid:string --actions report
   sleep .5
 
-  # Sales Billing
-
-  mix scribe.gen.domain Sales.Billing BillingProduct billing_products sku:string quantity:integer cost_per_unit:integer --no-default-actions --actions build
-  sleep .5
-
   # Warehouse Fulfillment
   mix scribe.gen.html Warehouse.Fulfillment FulfillmentProduct fulfillment_products sku:string label:string total_quantity:integer location:string --no-default-actions --actions build
   sleep .5

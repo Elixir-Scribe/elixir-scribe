@@ -258,8 +258,8 @@ This generators provide developers with the tools to go from zero to hero in no 
 
 #### Mix Tasks
 
-- [ ] `scribe.gen.domain`
-- [ ] `scribe.gen.html`
+- [x] `scribe.gen.domain`
+- [x] `scribe.gen.html`
 - [ ] `scribe.gen.live`
 - [ ] `scribe.gen.template`
   * Generates a template to be customized for the project.

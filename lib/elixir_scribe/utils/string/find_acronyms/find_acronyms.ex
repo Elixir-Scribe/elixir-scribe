@@ -1,4 +1,6 @@
 defmodule ElixirScribe.Utils.String.FindAcronyms do
+  @moduledoc false
+
   @doc """
   Finds acronyms in a string. An acronym is defined as two or more consecutive uppercase letters.
 
