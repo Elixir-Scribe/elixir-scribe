@@ -188,8 +188,6 @@ end
 
 ## Quickstart
 
-> **IMPORTANT:** Not merged yet to the main branch.
-
 Let's create a fictitious Online Shop to exemplify how to use the Elixir Scribe tool:
 
 ```
@@ -203,7 +201,6 @@ mix scribe.gen.html Catalog Category categories name:string desc:string
 ```
 
 > Elixir Scribe default actions: create, delete, edit, list, new, read, update
-
 
 Let's add to the domain `Catalog` the resource `Product` with custom actions on top of the default actions:
 
