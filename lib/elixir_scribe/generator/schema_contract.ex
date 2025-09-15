@@ -47,6 +47,7 @@ defmodule ElixirScribe.Generator.SchemaContract do
     fixture_unique_functions: [],
     fixture_params: [],
     prefix: nil,
+    scope: nil,
     timestamp_type: :naive_datetime
   ]
 
@@ -95,6 +96,7 @@ defmodule ElixirScribe.Generator.SchemaContract do
       fixture_unique_functions: [],
       fixture_params: [],
       prefix: spec(is_binary() or is_nil()),
+      scope: is_nil() |> spec(),
       timestamp_type: is_atom() |> spec()
     })
   end

@@ -76,7 +76,10 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
       acronyms = alias_singular |> StringAPI.find_acronyms()
       schema_plural_capitalized = schema_plural |> StringAPI.capitalize()
 
-      alias_plural = Enum.reduce(acronyms, schema_plural_capitalized, fn acronym, acc -> acc |> String.replace(StringAPI.capitalize(acronym), acronym) end)
+      alias_plural =
+        Enum.reduce(acronyms, schema_plural_capitalized, fn acronym, acc ->
+          acc |> String.replace(StringAPI.capitalize(acronym), acronym)
+        end)
 
       module_alias = alias_singular |> Module.concat(nil)
       module_alias_plural = alias_plural |> Module.concat(nil)
@@ -543,7 +546,7 @@ defmodule ElixirScribe.Generator.Schema.Resource.BuildSchemaResourceContract do
   end
 
   defp types(attrs) do
-    Enum.into(attrs, %{}, fn
+    Keyword.new(attrs, fn
       {key, {:enum, vals}} -> {key, {:enum, values: translate_enum_vals(vals)}}
       {key, {root, val}} -> {key, {root, schema_type(val)}}
       {key, val} -> {key, schema_type(val)}

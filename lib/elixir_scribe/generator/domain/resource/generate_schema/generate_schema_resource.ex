@@ -20,5 +20,7 @@ defmodule ElixirScribe.Generator.Domain.Resource.GenerateSchema.GenerateSchemaRe
     contract
     |> BindingAPI.build_binding_template()
     |> Keyword.merge(schema: contract.schema)
+    |> Keyword.merge(primary_key: contract.schema.opts[:primary_key] || :id)
+    |> Keyword.merge(scope: contract.schema.scope)
   end
 end
