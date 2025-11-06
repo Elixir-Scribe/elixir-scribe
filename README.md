@@ -6,7 +6,7 @@
 
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
-The motivation to create the Elixir Scribe tool was to encourage developers to write code that follows the **Single Responsability Principle** and it's structured in a **self-doumented folder structure**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing accidental coupling and complexity, which also contributes for less technical debt.
+The motivation to create the Elixir Scribe tool was to encourage developers to write code that follows the **Single Responsability Principle** and it's structured in a **Self-Documented Folder Structure**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing accidental coupling and complexity, which also contributes for less technical debt.
 
 The Elixir Scribe tool enables developers to go from zero to hero in no time, while empowering their craftsmanship and professionalism to reach new levels never imagined before or thought to not be easy to achieve.
 
@@ -245,7 +245,7 @@ No release date planned for now.
 
 ### Elixir Scribe Generators
 
-This generators provide developers with the tools to go from zero to hero in no time, while following a Self-Documented Folder Structure that encourages Clean Code when building their Apps or APIs.
+This generators provide developers with the tools to go from zero to hero in no time, while following a **Self-Documented Folder Structure** that encourages **Single Responsibility Code** when building their Apps or APIs.
 
 #### Typed Contracts
 
