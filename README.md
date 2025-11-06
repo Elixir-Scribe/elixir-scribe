@@ -6,7 +6,7 @@
 
 Scribes were an elite in ancient societies, highly regarded and holding special social status. They were disciplined and known for their excellent craftsmanship in writing laws, copying documents, and other related tasks.
 
-The motivation to create the Elixir Scribe tool was to encourage developers to write **Clean Code** in a **Clean Software Architecture**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing complexity and contributing for less technical debt.
+The motivation to create the Elixir Scribe tool was to encourage developers to write code that follows the **Single Responsability Principle** and it's structured in a **Self-Documented Folder Structure**, to enable them to know in seconds all domains, resources, and actions used in a project, while reducing accidental coupling and complexity, which also contributes for less technical debt.
 
 The Elixir Scribe tool enables developers to go from zero to hero in no time, while empowering their craftsmanship and professionalism to reach new levels never imagined before or thought to not be easy to achieve.
 
@@ -34,8 +34,8 @@ Curious about the next release? Be no more: [check here](#elixir-scribe-next-rel
 ### TOC
   
 * [Reduced Complexity Equals to Less Technical Debt](#reduced-complexity-equals-to-less-technical-debt)
-* [Clean Software Architecture](#clean-software-architecture)
-* [Clean Code](#clean-code)
+* [Self-Documented Folder Structure](#self-documented-folder-structure)
+* [Single Responsibility Code](#single-responsibility-code)
 * [Benefits](#benefits)
 * [Installation](#installation)
 * [Quickstart](#quickstart)
@@ -49,22 +49,22 @@ Curious about the next release? Be no more: [check here](#elixir-scribe-next-rel
 
 ## Reduced Complexity Equals to Less Technical Debt
 
-The Elixir Scribe generators will help developers to effortless organize their code by Domain, Resource and all possible actions on the Resource to reduce complexity and technical debt.
+The Elixir Scribe generators will help developers to effortless organize their code by Domain, Resource and all possible actions on the Resource to reduce accidental coupling and complexity, which reduces technical debt.
 
-This reduction in complexity translates into fewer bugs and makes it easier to add new features and implement bug fixes when they arise. Consequently, this results in less maintenance and technical debt across the lifetime of a project, leading to a more robust and easier-to-work-with code-base.
+This reduction in accidental coupling and complexity translates into fewer bugs and makes it easier to add new features and implement bug fixes when they arise. Consequently, this results in less maintenance and technical debt across the lifetime of a project, leading to a more robust and easier-to-work-with code-base.
 
 Ultimately, this enhances developer experience, velocity and productivity. This is a win win for both the business and developers.
 
 [TOC](#toc)
 
 
-## Clean Software Architecture
+## Self-Documented Folder Structure
 
-A Clean Software Architecture **MUST** allow developers to understand in seconds, or in a couple of minutes, all Domains, Resources and actions of the project they are working on.
+A Self-Documented Folder Structure **MUST** allow developers to understand in seconds, or in a couple of minutes, all Domains, Resources and actions of the project they are working on.
 
 Can you grasp, in seconds, all domains, resources, and actions in your current large professional or side projects? With the Elixir Scribe folder structure you will always reply **YES** to the this question.
 
-Let's do an exercise. How much time do you need to know all domains, resources and actions from the below fictitious `acme` app?
+Let's do an exercise. How much time do you need to know all domains, resources and actions from the below fictitious `my_app`?
 
 The below folder structure reflects the Elixir Scribe generator used in the [Quickstart](#quickstart):
 
@@ -133,22 +133,22 @@ lib
 
 So, how many seconds did it took you to have an overview of the project and understand all it's Domains, Resources and Actions? How much time do you think you would spend looking through the code-base to find where to fix a bug to `export` a Product or to add a new feature to the Category resource?
 
-This is a very simplistic view of a project. Now, imagine reaping the benefits of this folder structure implemented on your huge code-base, which may now contain dozens, hundreds, or even thousands of resources *(yes, I worked in such a project)*, each with potentially more actions than the ones exemplified here.
+This is a very simplistic view of a project. Now, imagine reaping the benefits of this folder structure implemented on your huge code-base, which may now contain dozens, hundreds, or even thousands of resources **(yes, I worked in such a project)**, each with potentially more actions than the ones exemplified here.
 
-Take a moment to compare this folder structure with the traditional ones used in any project you worked so far, be it an Elixir / Phoenix project or not, which often condenses several resources and all their actions into a single module / class, without even care about Domain boundaries. 
+Take a moment to compare this folder structure with the traditional ones used in any project you worked so far, be it an Elixir / Phoenix project or not, which often condenses several resources and all their actions into a single module, without even care about Domain boundaries. 
 
 [TOC](#toc)
 
 
-## Clean Code
+## Single Responsibility Code
 
-Writing Clean Code relies on several aspects, and one of them is to follow the Single Responsibility Principle, which is encouraged by the Elixir Scribe tool, when it forces the developer to split all possible actions on a Resource into a single module by action on a Resource.
+Writing code that's easy to read and reason about relies on several aspects, and one of the most important ones may be to follow the Single Responsibility Principle, which is encouraged by the Elixir Scribe tool, when it forces the developer to split all possible actions on a Resource into a single module by action on a Resource.
 
 The Developer can still manage to mix responsibilities in the action module for the Resource. For example, any access to a third party service should be delegated to another module. The action module should do only one thing, to handle the data as per the businesses rules.
 
-The Elixir Scribe tool doesn't enforce an architecture inside the action folder, leaving the Developer free to apply the best one for it's use case. For example, the module generated by the Elixir Scribe tool inside the action folder may be used as an entry-point to orchestrate all required steps to perform the action on the Resource, which will be done in other modules to follow the Single Responsibility Principle, reduce complexity per module, resulting in a Clean Code that it's easier to understand and maintain.
+The Elixir Scribe tool doesn't enforce an architecture inside the action folder, leaving the Developer free to apply the best one for it's use case. For example, the module generated by the Elixir Scribe tool inside the action folder may be used as an entry-point to orchestrate all required steps to perform the action on the Resource, which will be done in other modules to follow the Single Responsibility Principle, reduce complexity per module, resulting in a **Single Responsibility Code** that it's easier to understand, reasoning about and maintain.
 
-Can you now understand why Elixir Scribe encourages developers to write **Clean Code** in a **Clean Software Architecture**?
+Can you now understand why Elixir Scribe encourages developers to write **Single Responsibility Code** in a **Self-Documented Folder Structure**?
 
 [TOC](#toc)
 
@@ -245,7 +245,7 @@ No release date planned for now.
 
 ### Elixir Scribe Generators
 
-This generators provide developers with the tools to go from zero to hero in no time, while following a Clean Software Architecture that encourages Clean Code when building their Apps or APIs.
+This generators provide developers with the tools to go from zero to hero in no time, while following a **Self-Documented Folder Structure** that encourages **Single Responsibility Code** when building their Apps or APIs.
 
 #### Typed Contracts
 
@@ -314,4 +314,4 @@ This generators provide developers with the tools to go from zero to hero in no 
 
 - [ ] Website to sell free and paid licenses for Elixir Scribe templates.
   * The marketplace will support as vendors anyone that builds quality templates with the Elixir Scribe tool.
-  * Vendors of paid licenses will pay a fee for each sale, plus payment fees. It will be all very transparent, no hidden fees. 
+  * Vendors of paid licenses will pay a fee for each sale, plus payment fees. It will be all very transparent, no hidden fees.
